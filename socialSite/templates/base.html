@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- bootstarp -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+        <!-- medium css -->
+
+        {% comment %} <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script> {% endcomment %}
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+
+        <!-- static css -->
+        <link rel="stylesheet" href="{% static "css/master.css" %}"/>
+        <!-- fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+        <!-- nav bar -->
+        <nav class="navbar  techfont custom-navbar mynav" role="navigation" id="navbar"">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class='navbar-brand bigbrand' href="{% url 'home' %}">Star Social</a></li>
+                    
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'posts:all' %}">Post_list</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'posts:create' %}">Post</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'groups:all' %}">Groups</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'groups:create' %}">Create Group</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                    
+                    {% else %}
+                    <li>
+                        <a href="{% url 'groups:all' %}">Groups</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:login' %}">
+                        <span class="glyphicon glyphicon-user"></span>Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">
+                        <span class="glyphicon glyphicon-user"></span>Sign Up
+                        </a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+        </nav>
+
+<div class="mycontent container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="social">
+                         {% block content %}
+    
+                        {% endblock content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   <canvas id="canvas"></canvas>
+    
+</body>
+    <script type="text/javascript" src="{% static "js/master.js" %}"></script>
+</html>

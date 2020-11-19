@@ -1,0 +1,18 @@
+{% extends 'accounts/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div>
+    <h1>Welcome..!</h1>
+    <h1>Log In</h1>
+
+    <form  method="post">
+        {% csrf_token %}
+       {% bootstrap_form form %}
+    {% buttons submit='Log In'  %}{% endbuttons %}
+        {% comment %} <input type="button" class='btn btn-primary'value="Log In"> {% endcomment %}
+    </form>
+    </div>
+{% endblock content %}
+
+
