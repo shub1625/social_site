@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'django.contrib.humanize',
     'accounts',
     'bootstrap4',
     'posts',
     'groups',
-    'django.contrib.humanize',
+    
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'socialSite.urls'
@@ -129,3 +132,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,r'acco
 
 LOGIN_REDIRECT_URL = 'test'
 LOGOUT_REDIRECT_URL = 'thanks'
+
+INTERNAL_IPS =['127.0.0.1']

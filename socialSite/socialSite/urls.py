@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from socialSite import views
-
+from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.HomePage.as_view(),name='home'),
@@ -27,3 +27,9 @@ urlpatterns = [
     path("posts/", include('posts.urls',namespace='posts')),
     path('groups/',include('groups.urls',namespace='groups')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path("__debug__/", include(debug_toolbar.urls))
+    ] + urlpatterns
